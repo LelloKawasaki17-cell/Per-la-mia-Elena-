@@ -2,1176 +2,1762 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#180b18">
-  <title>Elena's World ❤️</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #180b18;
-      --bg2: #2a1028;
-      --pink: #f5b6d2;
-      --gold: #e7c98a;
-      --white: #fff6fb;
-      --muted: #d9bdce;
-      --card: rgba(255,255,255,.07);
-      --border: rgba(245,182,210,.22);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 85px;
-    }
-
-    body {
-      background:
-        radial-gradient(circle at 15% 10%, #51213f 0, transparent 32%),
-        radial-gradient(circle at 85% 45%, #32152f 0, transparent 35%),
-        linear-gradient(145deg, var(--bg), #100810 70%);
-      color: var(--white);
-      font-family: "Montserrat", sans-serif;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .22;
-      background-image:
-        radial-gradient(2px 2px at 20% 30%, white 50%, transparent),
-        radial-gradient(1px 1px at 70% 60%, white 50%, transparent),
-        radial-gradient(2px 2px at 90% 20%, white 50%, transparent),
-        radial-gradient(1px 1px at 40% 80%, white 50%, transparent);
-      background-size: 180px 180px;
-      z-index: -1;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding: 14px 5%;
-      background: rgba(20, 8, 20, .86);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .logo {
-      font-family: "Great Vibes", cursive;
-      font-size: 30px;
-      color: var(--pink);
-      white-space: nowrap;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .nav-links::-webkit-scrollbar {
-      display: none;
-    }
-
-    .nav-links a {
-      font-size: 11px;
-      letter-spacing: 1px;
-      color: var(--muted);
-      white-space: nowrap;
-      transition: .3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-
-    .hero {
-      min-height: 92vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 80px 22px;
-      position: relative;
-    }
-
-    .eyebrow {
-      color: var(--gold);
-      letter-spacing: 4px;
-      font-size: 10px;
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 {
-      font-family: "Great Vibes", cursive;
-      font-size: clamp(65px, 13vw, 145px);
-      font-weight: 400;
-      line-height: 1;
-      color: var(--pink);
-      text-shadow: 0 0 40px rgba(245,182,210,.25);
-    }
-
-    .hero h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(22px, 4vw, 38px);
-      font-weight: 400;
-      margin-top: 20px;
-      color: var(--gold);
-    }
-
-    .hero-dedication {
-      max-width: 760px;
-      margin: 32px auto 0;
-      color: #f5dce9;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(20px, 3vw, 28px);
-      line-height: 1.65;
-    }
-
-    .hero-dedication strong {
-      color: var(--pink);
-      font-weight: 600;
-    }
-
-    .hero-heart {
-      font-size: 44px;
-      margin-top: 30px;
-      animation: heartbeat 1.8s infinite;
-      filter: drop-shadow(0 0 20px #f36da7);
-    }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 30px;
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 3px;
-    }
-
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      15% { transform: scale(1.18); }
-      30% { transform: scale(1); }
-      45% { transform: scale(1.12); }
-    }
-
-    section {
-      padding: 85px 6%;
-      max-width: 1400px;
-      margin: auto;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .section-heading .small {
-      color: var(--gold);
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .section-heading h2 {
-      font-family: "Great Vibes", cursive;
-      font-size: clamp(48px, 8vw, 78px);
-      font-weight: 400;
-      color: var(--pink);
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 12px;
-      line-height: 1.8;
-    }
-
-    .glass {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 60px rgba(0,0,0,.18);
-    }
-
-    /* NOI */
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .photo-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: #2a1427;
-      cursor: pointer;
-      min-height: 230px;
-      transition: transform .35s, box-shadow .35s;
-    }
-
-    .photo-card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 18px 40px rgba(245,182,210,.13);
-    }
-
-    .photo-card img {
-      display: block;
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      transition: transform .6s;
-    }
-
-    .photo-card:hover img {
-      transform: scale(1.04);
-    }
-
-    .photo-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 28px 18px 18px;
-      background: linear-gradient(transparent, rgba(15,5,15,.9));
-      font-family: "Cormorant Garamond", serif;
-      font-size: 22px;
-      color: white;
-    }
-
-    .gallery-note {
-      text-align: center;
-      margin-top: 30px;
-      color: var(--muted);
-      font-family: "Cormorant Garamond", serif;
-      font-size: 23px;
-    }
-
-    /* LIGHTBOX */
-
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(8,3,8,.95);
-      z-index: 500;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .lightbox.open {
-      display: flex;
-    }
-
-    .lightbox img {
-      max-width: 95vw;
-      max-height: 85vh;
-      object-fit: contain;
-      border-radius: 12px;
-      box-shadow: 0 0 40px rgba(245,182,210,.12);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 18px;
-      right: 22px;
-      border: 0;
-      background: transparent;
-      color: white;
-      font-size: 38px;
-      cursor: pointer;
-    }
-
-    /* 144 MOTIVI */
-
-    .reasons-box {
-      max-width: 850px;
-      margin: auto;
-      padding: 40px 28px;
-      text-align: center;
-    }
-
-    .reason-number {
-      color: var(--gold);
-      font-size: 11px;
-      letter-spacing: 3px;
-      margin-bottom: 24px;
-    }
-
-    .reason-text {
-      min-height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(27px, 5vw, 43px);
-      line-height: 1.4;
-      color: #fff0f8;
-    }
-
-    .reason-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .romantic-button {
-      border: 1px solid rgba(245,182,210,.4);
-      background: linear-gradient(135deg, #8c3e68, #572747);
-      color: white;
-      padding: 13px 22px;
-      border-radius: 40px;
-      cursor: pointer;
-      transition: .3s;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    .romantic-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(245,182,210,.2);
-    }
-
-    /* LETTERA */
-
-    .letter {
-      max-width: 850px;
-      margin: auto;
-      padding: clamp(25px, 6vw, 60px);
-      position: relative;
-    }
-
-    .letter::before {
-      content: "♡";
-      position: absolute;
-      top: 15px;
-      right: 25px;
-      font-size: 60px;
-      color: rgba(245,182,210,.12);
-    }
-
-    .letter h3 {
-      font-family: "Great Vibes", cursive;
-      font-size: 44px;
-      color: var(--gold);
-      font-weight: 400;
-      margin-bottom: 25px;
-    }
-
-    .letter p {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 23px;
-      line-height: 1.8;
-      color: #f4dce9;
-      margin-bottom: 18px;
-    }
-
-    .signature {
-      font-family: "Great Vibes", cursive;
-      color: var(--pink);
-      font-size: 42px;
-      text-align: right;
-      margin-top: 30px;
-    }
-
-    /* TIMELINE */
-
-    .timeline {
-      max-width: 850px;
-      margin: auto;
-      position: relative;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 20px;
-      width: 1px;
-      background: linear-gradient(var(--pink), var(--gold), transparent);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 28px;
-      padding: 25px 25px 25px 55px;
-    }
-
-    .timeline-item::before {
-      content: "♥";
-      position: absolute;
-      left: 8px;
-      top: 26px;
-      color: var(--pink);
-      font-size: 24px;
-    }
-
-    .timeline-date {
-      color: var(--gold);
-      font-size: 11px;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    .timeline-item h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 29px;
-      font-weight: 600;
-      color: var(--pink);
-      margin-bottom: 8px;
-    }
-
-    .timeline-item p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    /* SOGNI */
-
-    .dreams-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .dream-card {
-      padding: 30px 24px;
-      text-align: center;
-    }
-
-    .dream-icon {
-      font-size: 35px;
-      margin-bottom: 18px;
-    }
-
-    .dream-card h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 27px;
-      color: var(--pink);
-      margin-bottom: 12px;
-    }
-
-    .dream-card p {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.8;
-    }
-
-    .final-message {
-      text-align: center;
-      padding: 80px 20px 100px;
-    }
-
-    .final-message h2 {
-      font-family: "Great Vibes", cursive;
-      color: var(--pink);
-      font-size: clamp(50px, 9vw, 90px);
-      font-weight: 400;
-    }
-
-    .final-message p {
-      color: var(--gold);
-      font-family: "Cormorant Garamond", serif;
-      font-size: 26px;
-      margin-top: 18px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px 15px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 2px;
-    }
-
-    .floating-heart {
-      position: fixed;
-      bottom: -30px;
-      z-index: -1;
-      color: rgba(245,182,210,.2);
-      animation: floatUp linear forwards;
-      pointer-events: none;
-    }
-
-    @keyframes floatUp {
-      from {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-      }
-      15% { opacity: 1; }
-      to {
-        transform: translateY(-110vh) rotate(35deg);
-        opacity: 0;
-      }
-    }
-
-    @media (max-width: 850px) {
-      .gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .photo-card img {
-        height: 300px;
-      }
-
-      .dreams-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .dream-card {
-        padding: 25px;
-      }
-
-      .navbar {
-        flex-direction: column;
-        padding: 12px 15px;
-      }
-
-      .nav-links {
-        max-width: 100%;
-        gap: 15px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      section {
-        padding: 65px 17px;
-      }
-
-      .hero {
-        min-height: 85vh;
-        padding: 65px 18px;
-      }
-
-      .gallery {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-
-      .photo-card img {
-        height: 390px;
-      }
-
-      .reasons-box {
-        padding: 30px 18px;
-      }
-
-      .reason-controls {
-        gap: 8px;
-      }
-
-      .romantic-button {
-        padding: 12px 16px;
-        font-size: 10px;
-      }
-
-      .letter p {
-        font-size: 21px;
-      }
-
-      .timeline-item {
-        padding-right: 15px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#160916">
+<title>Elena's World ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#160916;
+  --bg2:#2b142b;
+  --pink:#f5b6d2;
+  --gold:#e8cc91;
+  --white:#fff6fb;
+  --muted:#d8bbce;
+  --glass:rgba(255,255,255,.065);
+  --border:rgba(245,182,210,.22);
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:90px;
+}
+
+body {
+  color:var(--white);
+  font-family:Montserrat,sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%,#51213f 0,transparent 35%),
+    radial-gradient(circle at 85% 45%,#32152f 0,transparent 35%),
+    linear-gradient(145deg,var(--bg),#0d060e);
+  overflow-x:hidden;
+}
+
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.2;
+  z-index:-1;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%,white 50%,transparent),
+    radial-gradient(1px 1px at 70% 60%,white 50%,transparent),
+    radial-gradient(2px 2px at 90% 20%,white 50%,transparent);
+  background-size:180px 180px;
+}
+
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+button {
+  font:inherit;
+}
+
+.navbar {
+  position:sticky;
+  top:0;
+  z-index:100;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding:14px 5%;
+  background:rgba(20,8,20,.9);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+
+.logo {
+  font-family:"Great Vibes",cursive;
+  font-size:30px;
+  color:var(--pink);
+  white-space:nowrap;
+}
+
+.nav-links {
+  display:flex;
+  gap:17px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.nav-links::-webkit-scrollbar {
+  display:none;
+}
+
+.nav-links a {
+  font-size:10px;
+  letter-spacing:1px;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+.nav-links a:hover {
+  color:var(--gold);
+}
+
+.hero {
+  min-height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:75px 22px;
+  position:relative;
+}
+
+.eyebrow {
+  color:var(--gold);
+  letter-spacing:4px;
+  font-size:10px;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+
+.hero h1 {
+  font-family:"Great Vibes",cursive;
+  font-size:clamp(65px,13vw,145px);
+  font-weight:400;
+  line-height:1;
+  color:var(--pink);
+  text-shadow:0 0 40px rgba(245,182,210,.25);
+}
+
+.hero h2 {
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(22px,4vw,38px);
+  font-weight:400;
+  margin-top:20px;
+  color:var(--gold);
+}
+
+.dedication {
+  max-width:760px;
+  margin:30px auto 0;
+  color:#f5dce9;
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(20px,3vw,28px);
+  line-height:1.65;
+}
+
+.dedication strong {
+  color:var(--pink);
+}
+
+.hero-heart {
+  font-size:44px;
+  margin-top:25px;
+  animation:heartbeat 1.8s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100%{transform:scale(1)}
+  15%{transform:scale(1.18)}
+  30%{transform:scale(1)}
+  45%{transform:scale(1.12)}
+}
+
+.scroll-hint {
+  position:absolute;
+  bottom:25px;
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:3px;
+}
+
+section {
+  max-width:1400px;
+  margin:auto;
+  padding:80px 6%;
+}
+
+.heading {
+  text-align:center;
+  margin-bottom:42px;
+}
+
+.heading .small {
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+
+.heading h2 {
+  font-family:"Great Vibes",cursive;
+  font-size:clamp(48px,8vw,78px);
+  font-weight:400;
+  color:var(--pink);
+}
+
+.heading p {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+  margin-top:12px;
+}
+
+.glass {
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:24px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 20px 60px rgba(0,0,0,.18);
+}
+
+.button {
+  border:1px solid rgba(245,182,210,.4);
+  background:linear-gradient(135deg,#8c3e68,#572747);
+  color:white;
+  padding:13px 22px;
+  border-radius:40px;
+  cursor:pointer;
+  transition:.3s;
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+.button:hover {
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(245,182,210,.2);
+}
+
+.center {
+  text-align:center;
+}
+
+/* COUNTDOWN */
+
+.countdown-box {
+  max-width:900px;
+  margin:auto;
+  padding:35px 20px;
+  text-align:center;
+}
+
+.countdown-label {
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:3px;
+  margin-bottom:25px;
+}
+
+.countdown {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.time-unit {
+  padding:18px 8px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+}
+
+.time-unit strong {
+  display:block;
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(30px,6vw,55px);
+  color:var(--pink);
+  font-weight:500;
+}
+
+.time-unit span {
+  display:block;
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--muted);
+  margin-top:6px;
+}
+
+/* LETTERA SEGRETA */
+
+.envelope-area {
+  text-align:center;
+}
+
+.envelope {
+  width:210px;
+  height:140px;
+  margin:20px auto 30px;
+  position:relative;
+  cursor:pointer;
+  transition:transform .4s;
+  filter:drop-shadow(0 15px 25px rgba(0,0,0,.3));
+}
+
+.envelope:hover {
+  transform:translateY(-6px);
+}
+
+.envelope-back {
+  position:absolute;
+  inset:0;
+  background:#a94e7b;
+  border-radius:8px;
+}
+
+.envelope-flap {
+  position:absolute;
+  inset:0;
+  background:#d77fa8;
+  clip-path:polygon(0 0,100% 0,50% 65%);
+  transform-origin:top;
+  transition:transform .7s;
+  z-index:3;
+}
+
+.envelope-front {
+  position:absolute;
+  inset:0;
+  background:#b65b86;
+  clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);
+  z-index:2;
+}
+
+.envelope-heart {
+  position:absolute;
+  z-index:4;
+  left:50%;
+  top:55%;
+  transform:translate(-50%,-50%);
+  font-size:36px;
+}
+
+.envelope.open .envelope-flap {
+  transform:rotateX(180deg);
+}
+
+.envelope-note {
+  color:var(--muted);
+  font-family:"Cormorant Garamond",serif;
+  font-size:23px;
+}
+
+.secret-letter {
+  display:none;
+  max-width:800px;
+  margin:35px auto 0;
+  padding:30px;
+  text-align:left;
+  animation:fadeIn .8s ease;
+}
+
+.secret-letter.visible {
+  display:block;
+}
+
+.secret-letter h3 {
+  font-family:"Great Vibes",cursive;
+  font-size:42px;
+  color:var(--gold);
+  margin-bottom:20px;
+  font-weight:400;
+}
+
+.secret-letter p {
+  font-family:"Cormorant Garamond",serif;
+  font-size:23px;
+  line-height:1.8;
+  color:#f4dce9;
+  margin-bottom:15px;
+}
+
+/* GALLERIA */
+
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+}
+
+.photo-card {
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:#2a1427;
+  cursor:pointer;
+  transition:.35s;
+}
+
+.photo-card:hover {
+  transform:translateY(-7px);
+  box-shadow:0 18px 40px rgba(245,182,210,.13);
+}
+
+.photo-card img {
+  display:block;
+  width:100%;
+  height:350px;
+  object-fit:cover;
+  transition:transform .6s;
+}
+
+.photo-card:hover img {
+  transform:scale(1.04);
+}
+
+.photo-caption {
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:28px 18px 18px;
+  background:linear-gradient(transparent,rgba(15,5,15,.9));
+  font-family:"Cormorant Garamond",serif;
+  font-size:22px;
+  color:white;
+}
+
+.gallery-note {
+  text-align:center;
+  margin-top:30px;
+  color:var(--muted);
+  font-family:"Cormorant Garamond",serif;
+  font-size:23px;
+}
+
+/* DIARIO */
+
+.diary {
+  max-width:900px;
+  margin:35px auto 0;
+  padding:30px;
+  text-align:center;
+}
+
+.diary-photo {
+  width:100%;
+  max-height:450px;
+  object-fit:contain;
+  border-radius:15px;
+  margin-bottom:20px;
+  display:none;
+}
+
+.diary-photo.active {
+  display:block;
+  animation:fadeIn .5s ease;
+}
+
+.diary-caption {
+  color:var(--pink);
+  font-family:"Cormorant Garamond",serif;
+  font-size:28px;
+  margin-bottom:20px;
+}
+
+.diary-controls {
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+
+/* LIGHTBOX */
+
+.lightbox {
+  position:fixed;
+  inset:0;
+  background:rgba(8,3,8,.96);
+  z-index:500;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.lightbox.open {
+  display:flex;
+}
+
+.lightbox img {
+  max-width:95vw;
+  max-height:85vh;
+  object-fit:contain;
+  border-radius:12px;
+}
+
+.lightbox-close {
+  position:absolute;
+  top:18px;
+  right:22px;
+  border:0;
+  background:transparent;
+  color:white;
+  font-size:38px;
+  cursor:pointer;
+}
+
+/* MOTIVI */
+
+.reasons-box {
+  max-width:850px;
+  margin:auto;
+  padding:40px 28px;
+  text-align:center;
+}
+
+.reason-number {
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:3px;
+  margin-bottom:24px;
+}
+
+.reason-text {
+  min-height:120px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(27px,5vw,43px);
+  line-height:1.4;
+  color:#fff0f8;
+}
+
+.reason-controls {
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:30px;
+}
+
+/* COSTELLAZIONE */
+
+.universe {
+  max-width:900px;
+  margin:auto;
+  padding:25px;
+  text-align:center;
+  overflow:hidden;
+}
+
+#sky {
+  width:100%;
+  height:350px;
+  display:block;
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(92,35,86,.45),transparent 60%),
+    #100813;
+  border:1px solid var(--border);
+  cursor:pointer;
+}
+
+.star-instruction {
+  color:var(--muted);
+  font-family:"Cormorant Garamond",serif;
+  font-size:23px;
+  margin:20px 0;
+}
+
+.star-message {
+  color:var(--gold);
+  font-family:"Cormorant Garamond",serif;
+  font-size:27px;
+  min-height:50px;
+}
+
+/* REGALO DEL GIORNO */
+
+.daily-gift {
+  max-width:800px;
+  margin:auto;
+  padding:35px 25px;
+  text-align:center;
+}
+
+.gift-box {
+  font-size:70px;
+  cursor:pointer;
+  display:inline-block;
+  margin:15px 0;
+  transition:transform .4s;
+}
+
+.gift-box:hover {
+  transform:scale(1.12) rotate(-5deg);
+}
+
+.gift-message {
+  display:none;
+  font-family:"Cormorant Garamond",serif;
+  font-size:30px;
+  line-height:1.5;
+  color:var(--pink);
+  margin-top:20px;
+}
+
+.gift-message.visible {
+  display:block;
+  animation:fadeIn .7s ease;
+}
+
+/* LETTERA */
+
+.letter {
+  max-width:850px;
+  margin:auto;
+  padding:clamp(25px,6vw,60px);
+}
+
+.letter h3 {
+  font-family:"Great Vibes",cursive;
+  font-size:44px;
+  color:var(--gold);
+  font-weight:400;
+  margin-bottom:25px;
+}
+
+.letter p {
+  font-family:"Cormorant Garamond",serif;
+  font-size:23px;
+  line-height:1.8;
+  color:#f4dce9;
+  margin-bottom:18px;
+}
+
+.signature {
+  font-family:"Great Vibes",cursive;
+  color:var(--pink);
+  font-size:42px;
+  text-align:right;
+  margin-top:30px;
+}
+
+/* TIMELINE */
+
+.timeline {
+  max-width:850px;
+  margin:auto;
+  position:relative;
+}
+
+.timeline::before {
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:20px;
+  width:1px;
+  background:linear-gradient(var(--pink),var(--gold),transparent);
+}
+
+.timeline-item {
+  position:relative;
+  margin-bottom:28px;
+  padding:25px 25px 25px 55px;
+}
+
+.timeline-item::before {
+  content:"♥";
+  position:absolute;
+  left:8px;
+  top:26px;
+  color:var(--pink);
+  font-size:24px;
+}
+
+.timeline-date {
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:2px;
+  margin-bottom:10px;
+}
+
+.timeline-item h3 {
+  font-family:"Cormorant Garamond",serif;
+  font-size:29px;
+  color:var(--pink);
+  margin-bottom:8px;
+}
+
+.timeline-item p {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+}
+
+/* FUTURO */
+
+.dreams-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+
+.dream-card {
+  padding:30px 24px;
+  text-align:center;
+}
+
+.dream-icon {
+  font-size:35px;
+  margin-bottom:18px;
+}
+
+.dream-card h3 {
+  font-family:"Cormorant Garamond",serif;
+  font-size:27px;
+  color:var(--pink);
+  margin-bottom:12px;
+}
+
+.dream-card p {
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+}
+
+.final-message {
+  text-align:center;
+  padding:80px 20px 100px;
+}
+
+.final-message h2 {
+  font-family:"Great Vibes",cursive;
+  color:var(--pink);
+  font-size:clamp(50px,9vw,90px);
+  font-weight:400;
+}
+
+.final-message p {
+  color:var(--gold);
+  font-family:"Cormorant Garamond",serif;
+  font-size:26px;
+  margin-top:18px;
+}
+
+footer {
+  text-align:center;
+  padding:25px 15px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:2px;
+}
+
+.floating-heart {
+  position:fixed;
+  bottom:-30px;
+  z-index:-1;
+  color:rgba(245,182,210,.2);
+  animation:floatUp linear forwards;
+  pointer-events:none;
+}
+
+@keyframes floatUp {
+  from{transform:translateY(0);opacity:0}
+  15%{opacity:1}
+  to{transform:translateY(-110vh) rotate(35deg);opacity:0}
+}
+
+@keyframes fadeIn {
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:850px) {
+  .gallery {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .photo-card img {
+    height:300px;
+  }
+
+  .dreams-grid {
+    grid-template-columns:1fr;
+  }
+
+  .navbar {
+    flex-direction:column;
+    padding:12px 15px;
+  }
+
+  .nav-links {
+    max-width:100%;
+    gap:15px;
+  }
+}
+
+@media(max-width:520px) {
+  section {
+    padding:60px 17px;
+  }
+
+  .hero {
+    min-height:85vh;
+    padding:60px 18px;
+  }
+
+  .gallery {
+    grid-template-columns:1fr;
+  }
+
+  .photo-card img {
+    height:390px;
+  }
+
+  .countdown {
+    gap:6px;
+  }
+
+  .time-unit {
+    padding:15px 4px;
+  }
+
+  .time-unit span {
+    font-size:8px;
+    letter-spacing:1px;
+  }
+
+  .diary {
+    padding:18px;
+  }
+
+  .reason-controls {
+    gap:8px;
+  }
+
+  .button {
+    padding:12px 15px;
+    font-size:10px;
+  }
+
+  .letter p,.secret-letter p {
+    font-size:21px;
+  }
+
+  #sky {
+    height:280px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header class="navbar">
-    <a class="logo" href="#home">Elena's World ❤️</a>
+<header class="navbar">
+  <a class="logo" href="#home">Elena's World ❤️</a>
+  <nav class="nav-links">
+    <a href="#home">HOME</a>
+    <a href="#tempo">IL NOSTRO TEMPO</a>
+    <a href="#segreto">LETTERA SEGRETA</a>
+    <a href="#noi">NOI ❤️</a>
+    <a href="#diario">DIARIO</a>
+    <a href="#motivi">144 MOTIVI</a>
+    <a href="#universo">UNIVERSO</a>
+    <a href="#regalo">SORPRESA</a>
+    <a href="#lettera">LETTERA</a>
+    <a href="#ricordi">RICORDI</a>
+    <a href="#sogni">FUTURO</a>
+  </nav>
+</header>
 
-    <nav class="nav-links">
-      <a href="#home">HOME</a>
-      <a href="#noi">NOI ❤️</a>
-      <a href="#motivi">144 MOTIVI</a>
-      <a href="#lettera">LETTERA</a>
-      <a href="#ricordi">RICORDI</a>
-      <a href="#sogni">SOGNI</a>
-    </nav>
-  </header>
+<main>
 
-  <!-- HOME -->
+<!-- HOME -->
 
-  <main>
-    <section class="hero" id="home">
-      <div class="eyebrow">Il mio universo ha il tuo nome</div>
+<section class="hero" id="home">
+  <div class="eyebrow">Il mio universo ha il tuo nome</div>
+  <h1>Elena's World</h1>
+  <h2>Per la mia piccola Lelly ❤️</h2>
 
-      <h1>Elena's World</h1>
-
-      <h2>Per la mia piccola Lelly ❤️</h2>
-
-      <div class="hero-dedication">
-        È vero, non sono perfetto ed è anche vero che esistono
-        infiniti ragazzi migliori di me, ma il mio amore è sincero
-        e lo sarà per sempre, fino alla fine dei miei giorni.
-        <br><br>
-        <strong>Ti amo, piccola Lelly, sei la mia stella ❤️⭐️</strong>
-      </div>
-
-      <div class="hero-heart">❤️</div>
-
-      <div class="scroll-hint">SCORRI E SCOPRI IL NOSTRO MONDO ↓</div>
-    </section>
-
-    <!-- NOI -->
-
-    <section id="noi">
-      <div class="section-heading">
-        <div class="small">I nostri momenti</div>
-        <h2>Noi ❤️</h2>
-        <p>Ogni foto custodisce un pezzetto del mio cuore.</p>
-      </div>
-
-      <div class="gallery" id="gallery"></div>
-
-      <div class="gallery-note">
-        Non importa quale sia il momento,
-        se ci sei tu diventa speciale. ❤️
-      </div>
-    </section>
-
-    <!-- 144 MOTIVI -->
-
-    <section id="motivi">
-      <div class="section-heading">
-        <div class="small">Potrei continuare all'infinito</div>
-        <h2>144 motivi per amarti</h2>
-        <p>Uno alla volta, ma nessuno sarà mai abbastanza.</p>
-      </div>
-
-      <div class="reasons-box glass">
-        <div class="reason-number" id="reasonNumber">MOTIVO 1 / 144</div>
-        <div class="reason-text" id="reasonText">
-          Perché sei tu, semplicemente tu.
-        </div>
-
-        <div class="reason-controls">
-          <button class="romantic-button" id="prevReason">← Indietro</button>
-          <button class="romantic-button" id="nextReason">Il prossimo ❤️</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- LETTERA -->
-
-    <section id="lettera">
-      <div class="section-heading">
-        <div class="small">Dal profondo del mio cuore</div>
-        <h2>Una lettera per te</h2>
-      </div>
-
-      <article class="letter glass">
-        <h3>Amore mio,</h3>
-
-        <p>
-          A volte mi fermo a pensare a quanto sia incredibile
-          averti incontrata. Tra tutte le persone che avrei potuto
-          conoscere, la vita ha scelto di portare proprio te nel mio
-          mondo, e io non smetterò mai di esserne grato.
-        </p>
-
-        <p>
-          Non sono perfetto. Ho i miei difetti, le mie paure,
-          i miei momenti difficili e a volte non riesco a dimostrarti
-          tutto quello che sento nel modo giusto. Ma una cosa non
-          cambia mai: quello che provo per te è sincero.
-        </p>
-
-        <p>
-          Tu sei la mia piccola Lelly, la mia stella, il pensiero
-          che mi accompagna durante la giornata e il sorriso che
-          vorrei vedere ogni volta che torno a casa.
-        </p>
-
-        <p>
-          Vorrei costruire con te una vita fatta di cose semplici:
-          svegliarci insieme, ridere per stupidaggini, affrontare
-          i problemi tenendoci per mano, creare una famiglia e
-          guardarci un giorno pensando a tutto quello che abbiamo
-          superato.
-        </p>
-
-        <p>
-          Non ti prometto una vita senza difficoltà.
-          Ti prometto che il mio amore è vero, che voglio
-          continuare a sceglierti e che desidero costruire
-          il nostro futuro con te.
-        </p>
-
-        <p>
-          Se un giorno dovessi dimenticare quanto sei importante,
-          torna qui e ricordati che in questo mondo esiste un ragazzo
-          che ti ama con tutto il cuore.
-        </p>
-
-        <p>
-          Ti amo, piccola Lelly. Sei la mia stella oggi,
-          domani e in tutti i giorni che verranno.
-        </p>
-
-        <div class="signature">Per sempre tuo ❤️</div>
-      </article>
-    </section>
-
-    <!-- RICORDI -->
-
-    <section id="ricordi">
-      <div class="section-heading">
-        <div class="small">La nostra storia</div>
-        <h2>Ricordi</h2>
-        <p>Da quel primo incontro, fino a tutto ciò che ci aspetta.</p>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-item glass">
-          <div class="timeline-date">9 MARZO 2026</div>
-          <h3>Il nostro primo incontro</h3>
-          <p>
-            Il giorno in cui le nostre strade si sono incrociate.
-            Non sapevo ancora quanto saresti diventata importante.
-          </p>
-        </div>
-
-        <div class="timeline-item glass">
-          <div class="timeline-date">17 APRILE 2026</div>
-          <h3>Il nostro amore</h3>
-          <p>
-            Il giorno in cui abbiamo iniziato ufficialmente
-            questa bellissima storia: noi due, insieme.
-          </p>
-        </div>
-
-        <div class="timeline-item glass">
-          <div class="timeline-date">2 GIUGNO 2026</div>
-          <h3>Una promessa speciale</h3>
-          <p>
-            Il giorno in cui ti ho chiesto di diventare
-            la mia futura moglie. Un sogno che porto nel cuore.
-          </p>
-        </div>
-
-        <div class="timeline-item glass">
-          <div class="timeline-date">IL NOSTRO FUTURO</div>
-          <h3>Ancora tantissimi capitoli</h3>
-          <p>
-            Questa storia non è finita. È soltanto all'inizio
-            di tutto quello che voglio vivere insieme a te.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SOGNI -->
-
-    <section id="sogni">
-      <div class="section-heading">
-        <div class="small">Quello che desidero con te</div>
-        <h2>I nostri sogni</h2>
-        <p>Il futuro più bello è quello in cui ci sei tu.</p>
-      </div>
-
-      <div class="dreams-grid">
-        <div class="dream-card glass">
-          <div class="dream-icon">🏡</div>
-          <h3>La nostra casa</h3>
-          <p>
-            Un posto tutto nostro, pieno di amore, risate,
-            abbracci e piccoli momenti quotidiani.
-          </p>
-        </div>
-
-        <div class="dream-card glass">
-          <div class="dream-icon">💍</div>
-          <h3>Il nostro matrimonio</h3>
-          <p>
-            Guardarti negli occhi e prometterti ancora una volta
-            che voglio camminare al tuo fianco.
-          </p>
-        </div>
-
-        <div class="dream-card glass">
-          <div class="dream-icon">👨‍👩‍👧‍👦</div>
-          <h3>La nostra famiglia</h3>
-          <p>
-            Costruire una famiglia insieme e riempire la nostra
-            vita di amore, serenità e ricordi.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FINALE -->
-
-    <div class="final-message">
-      <h2>Tu sei il mio per sempre</h2>
-      <p>Ti amo, piccola Lelly ❤️⭐️</p>
-    </div>
-  </main>
-
-  <footer>
-    REALIZZATO CON AMORE, PER ELENA ❤️
-  </footer>
-
-  <!-- FOTO A SCHERMO INTERO -->
-
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="closeLightbox" aria-label="Chiudi">×</button>
-    <img id="lightboxImage" src="" alt="Un nostro ricordo">
+  <div class="dedication">
+    È vero, non sono perfetto ed è anche vero che esistono
+    infiniti ragazzi migliori di me, ma il mio amore è sincero
+    e lo sarà per sempre, fino alla fine dei miei giorni.
+    <br><br>
+    <strong>Ti amo, piccola Lelly, sei la mia stella ❤️⭐️</strong>
   </div>
 
-  <script>
-    // TUTTE LE FOTO: i file devono essere nella cartella principale
-    // del repository GitHub, accanto a index.html.
+  <div class="hero-heart">❤️</div>
+  <div class="scroll-hint">SCORRI E SCOPRI IL NOSTRO MONDO ↓</div>
+</section>
 
-    const media = [
-      {
-        src: "18EDFB90-882C-4DF2-B112-8C80F79436E8.jpeg",
-        caption: "Un ricordo speciale ❤️"
-      },
-      {
-        src: "420C425B-C546-4A12-8B41-5810E2211A9B.jpeg",
-        caption: "La mia piccola Lelly"
-      },
-      {
-        src: "665c5d7f-37aa-494a-8276-fc9d3761cfe9.jpeg",
-        caption: "Noi, il mio mondo ❤️"
-      },
-      {
-        src: "8E681457-8811-444C-AE96-9B83420225DA.jpeg",
-        caption: "La mia stella ⭐"
-      },
-      {
-        src: "IMG_9328.jpeg",
-        caption: "Un momento tutto nostro"
-      },
-      {
-        src: "IMG_9332.jpeg",
-        caption: "La mia felicità ❤️"
-      },
-      {
-        src: "IMG_9363.jpeg",
-        caption: "La mia Lelly"
-      },
-      {
-        src: "IMG_9365.jpeg",
-        caption: "Il mio amore"
-      },
-      {
-        src: "IMG_9375.jpeg",
-        caption: "Per sempre noi ❤️"
-      },
-      {
-        src: "f4bcc78a-f5c1-4c52-aad1-e007e638b65d.jpeg",
-        caption: "Un altro ricordo della mia Lelly ❤️"
-      }
-    ];
+<!-- COUNTDOWN -->
 
-    const gallery = document.getElementById("gallery");
+<section id="tempo">
+  <div class="heading">
+    <div class="small">Dal giorno in cui siamo diventati noi</div>
+    <h2>Il nostro tempo</h2>
+    <p>Ogni secondo vissuto con te è un regalo.</p>
+  </div>
 
-    media.forEach((photo, index) => {
-      const card = document.createElement("div");
-      card.className = "photo-card";
+  <div class="countdown-box glass">
+    <div class="countdown-label">INSIEME DAL 17 APRILE 2026 ❤️</div>
 
-      const img = document.createElement("img");
-      img.src = photo.src;
-      img.alt = photo.caption;
-      img.loading = "lazy";
+    <div class="countdown">
+      <div class="time-unit">
+        <strong id="days">0</strong>
+        <span>GIORNI</span>
+      </div>
+      <div class="time-unit">
+        <strong id="hours">0</strong>
+        <span>ORE</span>
+      </div>
+      <div class="time-unit">
+        <strong id="minutes">0</strong>
+        <span>MINUTI</span>
+      </div>
+      <div class="time-unit">
+        <strong id="seconds">0</strong>
+        <span>SECONDI</span>
+      </div>
+    </div>
 
-      img.onerror = function () {
-        card.innerHTML = `
-          <div style="padding:30px;text-align:center;color:#f5b6d2">
-            <div style="font-size:35px">📷</div>
-            <p style="margin-top:12px;font-size:12px">
-              Foto ${index + 1} non trovata.<br>
-              Controlla il nome del file su GitHub.
-            </p>
-          </div>
-        `;
-      };
+    <p style="color:var(--muted);margin-top:25px;font-family:'Cormorant Garamond',serif;font-size:23px">
+      E il nostro contatore continuerà a crescere... ❤️
+    </p>
+  </div>
+</section>
 
-      const caption = document.createElement("div");
-      caption.className = "photo-caption";
-      caption.textContent = photo.caption;
+<!-- LETTERA SEGRETA -->
 
-      card.appendChild(img);
-      card.appendChild(caption);
-      gallery.appendChild(card);
+<section id="segreto">
+  <div class="heading">
+    <div class="small">Una sorpresa tutta tua</div>
+    <h2>Una lettera segreta</h2>
+    <p>Ho nascosto qualcosa per te. Tocca la busta per aprirla.</p>
+  </div>
 
-      card.addEventListener("click", () => {
-        openLightbox(photo.src);
-      });
-    });
+  <div class="envelope-area">
+    <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri la lettera">
+      <div class="envelope-back"></div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-front"></div>
+      <div class="envelope-heart">❤️</div>
+    </div>
 
-    // LIGHTBOX
+    <div class="envelope-note">Per la mia piccola Lelly</div>
 
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImage = document.getElementById("lightboxImage");
+    <article class="secret-letter glass" id="secretLetter">
+      <h3>Amore mio...</h3>
 
-    function openLightbox(src) {
-      lightboxImage.src = src;
-      lightbox.classList.add("open");
+      <p>
+        Se stai leggendo questa lettera, significa che hai trovato
+        una piccola sorpresa che ho preparato per te.
+      </p>
+
+      <p>
+        Vorrei essere lì, davanti a te, per guardarti negli occhi
+        e dirti quanto sei importante per me. Vorrei stringerti
+        forte e non avere fretta di lasciarti andare.
+      </p>
+
+      <p>
+        Anche quando siamo lontani, tu sei una parte della mia
+        giornata. Sei nei miei pensieri, nei miei sogni e in tutto
+        quello che immagino per il futuro.
+      </p>
+
+      <p>
+        Non dimenticare mai che sei amata, desiderata e speciale.
+        Sei la mia piccola Lelly e sei la mia stella.
+      </p>
+
+      <p>
+        Ti amo con tutto il cuore. ❤️
+      </p>
+
+      <div class="signature">Il tuo amore</div>
+    </article>
+  </div>
+</section>
+
+<!-- NOI -->
+
+<section id="noi">
+  <div class="heading">
+    <div class="small">I nostri momenti</div>
+    <h2>Noi ❤️</h2>
+    <p>Ogni foto custodisce un pezzetto del mio cuore.</p>
+  </div>
+
+  <div class="gallery" id="gallery"></div>
+
+  <div class="gallery-note">
+    Non importa quale sia il momento,
+    se ci sei tu diventa speciale. ❤️
+  </div>
+</section>
+
+<!-- DIARIO -->
+
+<section id="diario">
+  <div class="heading">
+    <div class="small">Una pagina alla volta</div>
+    <h2>Il diario di noi</h2>
+    <p>Le nostre foto, come pagine di una storia che continua.</p>
+  </div>
+
+  <div class="diary glass">
+    <img id="diaryPhoto" class="diary-photo" src="" alt="Ricordo nostro">
+    <div class="diary-caption" id="diaryCaption">Il nostro primo ricordo</div>
+
+    <div class="diary-controls">
+      <button class="button" id="diaryPrev">← Precedente</button>
+      <button class="button" id="diaryNext">Successivo →</button>
+    </div>
+  </div>
+</section>
+
+<!-- 144 MOTIVI -->
+
+<section id="motivi">
+  <div class="heading">
+    <div class="small">Potrei continuare all'infinito</div>
+    <h2>144 motivi per amarti</h2>
+    <p>Uno alla volta, ma nessuno sarà mai abbastanza.</p>
+  </div>
+
+  <div class="reasons-box glass">
+    <div class="reason-number" id="reasonNumber">MOTIVO 1 / 144</div>
+    <div class="reason-text" id="reasonText">Perché sei tu, semplicemente tu.</div>
+
+    <div class="reason-controls">
+      <button class="button" id="prevReason">← Indietro</button>
+      <button class="button" id="nextReason">Il prossimo ❤️</button>
+    </div>
+  </div>
+</section>
+
+<!-- COSTELLAZIONE -->
+
+<section id="universo">
+  <div class="heading">
+    <div class="small">Due stelle, un solo universo</div>
+    <h2>La nostra costellazione</h2>
+    <p>In un cielo pieno di stelle, io sceglierei sempre la tua.</p>
+  </div>
+
+  <div class="universe glass">
+    <canvas id="sky"></canvas>
+    <div class="star-instruction">Tocca una delle nostre stelle ⭐</div>
+    <div class="star-message" id="starMessage">
+      Tu sei la mia stella, piccola Lelly.
+    </div>
+  </div>
+</section>
+
+<!-- REGALO DEL GIORNO -->
+
+<section id="regalo">
+  <div class="heading">
+    <div class="small">Una piccola sorpresa</div>
+    <h2>Il regalo del giorno</h2>
+    <p>Ogni giorno c'è un pensiero speciale che ti aspetta.</p>
+  </div>
+
+  <div class="daily-gift glass">
+    <div class="gift-box" id="giftBox" role="button" tabindex="0" aria-label="Apri il regalo">🎁</div>
+    <p style="color:var(--muted)">Tocca il regalo per scoprire il tuo messaggio ❤️</p>
+    <div class="gift-message" id="giftMessage"></div>
+  </div>
+</section>
+
+<!-- LETTERA -->
+
+<section id="lettera">
+  <div class="heading">
+    <div class="small">Dal profondo del mio cuore</div>
+    <h2>Una lettera per te</h2>
+  </div>
+
+  <article class="letter glass">
+    <h3>Amore mio,</h3>
+
+    <p>
+      A volte mi fermo a pensare a quanto sia incredibile
+      averti incontrata. Tra tutte le persone che avrei potuto
+      conoscere, la vita ha scelto di portare proprio te nel mio
+      mondo, e io non smetterò mai di esserne grato.
+    </p>
+
+    <p>
+      Non sono perfetto. Ho i miei difetti, le mie paure,
+      i miei momenti difficili e a volte non riesco a dimostrarti
+      tutto quello che sento nel modo giusto. Ma una cosa non
+      cambia mai: quello che provo per te è sincero.
+    </p>
+
+    <p>
+      Tu sei la mia piccola Lelly, la mia stella, il pensiero
+      che mi accompagna durante la giornata e il sorriso che
+      vorrei vedere ogni volta che torno a casa.
+    </p>
+
+    <p>
+      Vorrei costruire con te una vita fatta di cose semplici:
+      svegliarci insieme, ridere per stupidaggini, affrontare
+      i problemi tenendoci per mano, creare una famiglia e
+      guardarci un giorno pensando a tutto quello che abbiamo
+      superato.
+    </p>
+
+    <p>
+      Non ti prometto una vita senza difficoltà.
+      Ti prometto che il mio amore è vero, che voglio
+      continuare a sceglierti e che desidero costruire
+      il nostro futuro con te.
+    </p>
+
+    <p>
+      Se un giorno dovessi dimenticare quanto sei importante,
+      torna qui e ricordati che in questo mondo esiste un ragazzo
+      che ti ama con tutto il cuore.
+    </p>
+
+    <p>
+      Ti amo, piccola Lelly. Sei la mia stella oggi,
+      domani e in tutti i giorni che verranno.
+    </p>
+
+    <div class="signature">Per sempre tuo ❤️</div>
+  </article>
+</section>
+
+<!-- RICORDI -->
+
+<section id="ricordi">
+  <div class="heading">
+    <div class="small">La nostra storia</div>
+    <h2>Ricordi</h2>
+    <p>Da quel primo incontro, fino a tutto ciò che ci aspetta.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item glass">
+      <div class="timeline-date">9 MARZO 2026</div>
+      <h3>Il nostro primo incontro</h3>
+      <p>
+        Il giorno in cui le nostre strade si sono incrociate.
+        Non sapevo ancora quanto saresti diventata importante.
+      </p>
+    </div>
+
+    <div class="timeline-item glass">
+      <div class="timeline-date">17 APRILE 2026</div>
+      <h3>Il nostro amore</h3>
+      <p>
+        Il giorno in cui abbiamo iniziato ufficialmente
+        questa bellissima storia: noi due, insieme.
+      </p>
+    </div>
+
+    <div class="timeline-item glass">
+      <div class="timeline-date">2 GIUGNO 2026</div>
+      <h3>Una promessa speciale</h3>
+      <p>
+        Il giorno in cui ti ho chiesto di diventare
+        la mia futura moglie. Un sogno che porto nel cuore.
+      </p>
+    </div>
+
+    <div class="timeline-item glass">
+      <div class="timeline-date">IL NOSTRO FUTURO</div>
+      <h3>Ancora tantissimi capitoli</h3>
+      <p>
+        Questa storia non è finita. È soltanto all'inizio
+        di tutto quello che voglio vivere insieme a te.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURO -->
+
+<section id="sogni">
+  <div class="heading">
+    <div class="small">Quello che desidero con te</div>
+    <h2>I nostri sogni</h2>
+    <p>Il futuro più bello è quello in cui ci sei tu.</p>
+  </div>
+
+  <div class="dreams-grid">
+    <div class="dream-card glass">
+      <div class="dream-icon">🏡</div>
+      <h3>La nostra casa</h3>
+      <p>
+        Un posto tutto nostro, pieno di amore, risate,
+        abbracci e piccoli momenti quotidiani.
+      </p>
+    </div>
+
+    <div class="dream-card glass">
+      <div class="dream-icon">💍</div>
+      <h3>Il nostro matrimonio</h3>
+      <p>
+        Guardarti negli occhi e prometterti ancora una volta
+        che voglio camminare al tuo fianco.
+      </p>
+    </div>
+
+    <div class="dream-card glass">
+      <div class="dream-icon">👨‍👩‍👧‍👦</div>
+      <h3>La nostra famiglia</h3>
+      <p>
+        Costruire una famiglia insieme e riempire la nostra
+        vita di amore, serenità e ricordi.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="final-message">
+  <h2>Tu sei il mio per sempre</h2>
+  <p>Ti amo, piccola Lelly ❤️⭐️</p>
+</div>
+
+</main>
+
+<footer>
+  REALIZZATO CON AMORE, PER ELENA ❤️
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="closeLightbox" aria-label="Chiudi">×</button>
+  <img id="lightboxImage" src="" alt="Un nostro ricordo">
+</div>
+
+<script>
+// FOTO: tutti i file sono nella cartella principale del repository.
+
+const media = [
+  {
+    src:"18EDFB90-882C-4DF2-B112-8C80F79436E8.jpeg",
+    caption:"Un ricordo speciale ❤️"
+  },
+  {
+    src:"420C425B-C546-4A12-8B41-5810E2211A9B.jpeg",
+    caption:"La mia piccola Lelly"
+  },
+  {
+    src:"665c5d7f-37aa-494a-8276-fc9d3761cfe9.jpeg",
+    caption:"Noi, il mio mondo ❤️"
+  },
+  {
+    src:"8E681457-8811-444C-AE96-9B83420225DA.jpeg",
+    caption:"La mia stella ⭐"
+  },
+  {
+    src:"IMG_9328.jpeg",
+    caption:"Un momento tutto nostro"
+  },
+  {
+    src:"IMG_9332.jpeg",
+    caption:"La mia felicità ❤️"
+  },
+  {
+    src:"IMG_9363.jpeg",
+    caption:"La mia Lelly"
+  },
+  {
+    src:"IMG_9365.jpeg",
+    caption:"Il mio amore"
+  },
+  {
+    src:"IMG_9375.jpeg",
+    caption:"Per sempre noi ❤️"
+  },
+  {
+    src:"f4bcc78a-f5c1-4c52-aad1-e007e638b65d.jpeg",
+    caption:"Un altro ricordo della mia Lelly ❤️"
+  }
+];
+
+// GALLERIA
+
+const gallery = document.getElementById("gallery");
+
+media.forEach((photo,index) => {
+  const card = document.createElement("div");
+  card.className = "photo-card";
+
+  const img = document.createElement("img");
+  img.src = photo.src;
+  img.alt = photo.caption;
+  img.loading = "lazy";
+
+  img.onerror = () => {
+    card.innerHTML = `
+      <div style="padding:30px;text-align:center;color:#f5b6d2">
+        <div style="font-size:35px">📷</div>
+        <p style="margin-top:12px;font-size:12px">
+          Foto ${index+1} non trovata.<br>
+          Controlla il nome del file su GitHub.
+        </p>
+      </div>`;
+  };
+
+  const caption = document.createElement("div");
+  caption.className = "photo-caption";
+  caption.textContent = photo.caption;
+
+  card.appendChild(img);
+  card.appendChild(caption);
+  gallery.appendChild(card);
+
+  card.addEventListener("click",() => openLightbox(photo.src));
+});
+
+// LIGHTBOX
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+
+function openLightbox(src) {
+  lightboxImage.src = src;
+  lightbox.classList.add("open");
+}
+
+function closeLightbox() {
+  lightbox.classList.remove("open");
+  lightboxImage.src = "";
+}
+
+document.getElementById("closeLightbox")
+  .addEventListener("click",closeLightbox);
+
+lightbox.addEventListener("click",event => {
+  if(event.target === lightbox) closeLightbox();
+});
+
+document.addEventListener("keydown",event => {
+  if(event.key === "Escape") closeLightbox();
+});
+
+// CONTATORE DAL 17 APRILE 2026
+
+const relationshipStart = new Date(2026,3,17,0,0,0);
+
+function updateCountdown() {
+  const now = new Date();
+  let diff = now - relationshipStart;
+
+  if(diff < 0) diff = 0;
+
+  const seconds = Math.floor(diff/1000);
+  const days = Math.floor(seconds/86400);
+  const hours = Math.floor((seconds%86400)/3600);
+  const minutes = Math.floor((seconds%3600)/60);
+  const remainingSeconds = seconds%60;
+
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = remainingSeconds;
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+// BUSTA SEGRETA
+
+const envelope = document.getElementById("envelope");
+const secretLetter = document.getElementById("secretLetter");
+
+function openEnvelope() {
+  envelope.classList.toggle("open");
+  secretLetter.classList.toggle("visible");
+}
+
+envelope.addEventListener("click",openEnvelope);
+
+envelope.addEventListener("keydown",event => {
+  if(event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openEnvelope();
+  }
+});
+
+// DIARIO FOTOGRAFICO
+
+let diaryIndex = 0;
+
+const diaryPhoto = document.getElementById("diaryPhoto");
+const diaryCaption = document.getElementById("diaryCaption");
+
+function showDiaryPhoto() {
+  const photo = media[diaryIndex];
+
+  diaryPhoto.src = photo.src;
+  diaryPhoto.classList.add("active");
+  diaryCaption.textContent =
+    `Ricordo ${diaryIndex+1} di ${media.length} — ${photo.caption}`;
+}
+
+document.getElementById("diaryNext").addEventListener("click",() => {
+  diaryIndex = (diaryIndex+1)%media.length;
+  showDiaryPhoto();
+});
+
+document.getElementById("diaryPrev").addEventListener("click",() => {
+  diaryIndex = (diaryIndex-1+media.length)%media.length;
+  showDiaryPhoto();
+});
+
+showDiaryPhoto();
+
+// 144 MOTIVI
+
+const reasons = [
+  "Perché sei tu, semplicemente tu.",
+  "Perché il tuo sorriso illumina le mie giornate.",
+  "Perché mi fai sentire innamorato.",
+  "Perché sei la mia piccola Lelly.",
+  "Perché hai un posto speciale nel mio cuore.",
+  "Perché mi fai sognare il futuro.",
+  "Perché sei la mia stella.",
+  "Perché adoro sentirti parlare.",
+  "Perché mi fai ridere.",
+  "Perché mi fai emozionare.",
+  "Perché sei unica.",
+  "Perché sei speciale per me.",
+  "Perché mi piace pensare a noi.",
+  "Perché voglio abbracciarti.",
+  "Perché mi manchi quando siamo lontani.",
+  "Perché desidero vederti felice.",
+  "Perché sei il mio pensiero più dolce.",
+  "Perché mi piace il modo in cui sei.",
+  "Perché sei entrata nella mia vita.",
+  "Perché voglio condividere tutto con te.",
+  "Perché sei la mia compagna.",
+  "Perché mi fai battere il cuore.",
+  "Perché sei il mio amore.",
+  "Perché con te immagino una famiglia.",
+  "Perché voglio svegliarmi accanto a te.",
+  "Perché voglio stringerti la mano.",
+  "Perché voglio costruire una casa con te.",
+  "Perché mi piace parlare con te.",
+  "Perché adoro i nostri momenti.",
+  "Perché sei la mia felicità.",
+  "Perché sei il mio presente.",
+  "Perché sei nei miei sogni.",
+  "Perché voglio creare ricordi con te.",
+  "Perché sei dolce.",
+  "Perché sei meravigliosa.",
+  "Perché mi fai sentire fortunato.",
+  "Perché voglio proteggere il nostro amore.",
+  "Perché sei la mia scelta.",
+  "Perché voglio continuare a sceglierti.",
+  "Perché mi piace il tuo nome.",
+  "Perché mi piace chiamarti Lelly.",
+  "Perché sei la mia principessa.",
+  "Perché sei il mio tesoro.",
+  "Perché sei la mia persona speciale.",
+  "Perché voglio esserci per te.",
+  "Perché voglio sostenerti.",
+  "Perché voglio festeggiare i tuoi successi.",
+  "Perché voglio consolarti nei momenti difficili.",
+  "Perché voglio crescere insieme a te.",
+  "Perché voglio imparare da te.",
+  "Perché voglio migliorare per noi.",
+  "Perché il nostro amore conta per me.",
+  "Perché sei parte dei miei progetti.",
+  "Perché voglio viaggiare con te.",
+  "Perché voglio vedere il mondo insieme a te.",
+  "Perché voglio condividere le piccole cose.",
+  "Perché voglio ridere con te.",
+  "Perché voglio vivere nuove avventure con te.",
+  "Perché voglio creare tradizioni nostre.",
+  "Perché voglio ricordare ogni anniversario.",
+  "Perché voglio festeggiare il nostro amore.",
+  "Perché voglio sorprenderti.",
+  "Perché voglio farti sentire amata.",
+  "Perché voglio dirti buongiorno.",
+  "Perché voglio augurarti buonanotte.",
+  "Perché voglio essere il tuo abbraccio.",
+  "Perché voglio essere il tuo rifugio.",
+  "Perché voglio ascoltarti.",
+  "Perché voglio capirti.",
+  "Perché voglio rispettarti.",
+  "Perché voglio fidarmi di te.",
+  "Perché voglio meritare la tua fiducia.",
+  "Perché voglio affrontare la vita con te.",
+  "Perché voglio superare le difficoltà insieme.",
+  "Perché voglio costruire qualcosa di vero.",
+  "Perché voglio un amore sincero.",
+  "Perché voglio un amore che duri.",
+  "Perché voglio prendermi cura di noi.",
+  "Perché voglio custodire i nostri ricordi.",
+  "Perché voglio rivedere le nostre foto.",
+  "Perché ogni nostro ricordo mi emoziona.",
+  "Perché mi piace la nostra storia.",
+  "Perché il nostro incontro è speciale.",
+  "Perché il 9 marzo è un giorno importante.",
+  "Perché il 17 aprile è nel mio cuore.",
+  "Perché il 2 giugno mi ha cambiato la vita.",
+  "Perché voglio mantenere le promesse.",
+  "Perché voglio essere sincero con te.",
+  "Perché voglio parlare con il cuore.",
+  "Perché voglio chiederti come stai.",
+  "Perché voglio sapere cosa ti rende felice.",
+  "Perché voglio conoscere i tuoi sogni.",
+  "Perché voglio aiutarti a realizzarli.",
+  "Perché voglio vedere i tuoi occhi brillare.",
+  "Perché voglio essere orgoglioso di te.",
+  "Perché voglio che tu sia orgogliosa di noi.",
+  "Perché voglio amarti anche nei giorni difficili.",
+  "Perché voglio imparare a chiedere scusa.",
+  "Perché voglio trovare sempre il modo di capirci.",
+  "Perché voglio rispettare i tuoi spazi.",
+  "Perché voglio condividere il mio tempo con te.",
+  "Perché voglio che tu ti senta importante.",
+  "Perché voglio ricordarti quanto vali.",
+  "Perché voglio farti sorridere anche da lontano.",
+  "Perché voglio accorciare ogni distanza.",
+  "Perché voglio raggiungerti e abbracciarti.",
+  "Perché voglio camminare al tuo fianco.",
+  "Perché voglio tenerti la mano.",
+  "Perché voglio guardarti negli occhi.",
+  "Perché voglio dirti quanto ti amo.",
+  "Perché voglio chiamarti amore mio.",
+  "Perché voglio chiamarti futura moglie.",
+  "Perché sogno il nostro matrimonio.",
+  "Perché sogno la nostra casa.",
+  "Perché sogno la nostra famiglia.",
+  "Perché sogno una vita insieme.",
+  "Perché voglio condividere con te le domeniche.",
+  "Perché voglio cucinare insieme a te.",
+  "Perché voglio guardare film abbracciati.",
+  "Perché voglio fare foto buffe con te.",
+  "Perché voglio ballare con te.",
+  "Perché voglio cantare con te.",
+  "Perché voglio fare pazzie con te.",
+  "Perché voglio vivere momenti indimenticabili.",
+  "Perché voglio esserci nei tuoi giorni belli.",
+  "Perché voglio esserci nei tuoi giorni tristi.",
+  "Perché voglio essere una presenza sicura.",
+  "Perché voglio rispettare il tuo cuore.",
+  "Perché voglio proteggere la nostra complicità.",
+  "Perché voglio che il nostro amore cresca.",
+  "Perché voglio scegliere te ogni giorno.",
+  "Perché voglio continuare a innamorarmi di te.",
+  "Perché voglio avere ancora mille ricordi.",
+  "Perché voglio guardare indietro e sorridere.",
+  "Perché voglio invecchiare insieme a te.",
+  "Perché voglio che tu sia la mia ultima storia.",
+  "Perché sei la mia stella, piccola Lelly.",
+  "Perché ti amo oggi.",
+  "Perché ti amerò domani.",
+  "Perché voglio amarti in tutti i giorni che verranno.",
+  "Perché sei tu, Elena.",
+  "Perché sei il mio amore.",
+  "Perché sei il mio per sempre."
+];
+
+// Completa fino a 144 motivi, se necessario.
+while(reasons.length < 144) {
+  reasons.push("Perché ogni giorno trovo un nuovo motivo per amarti ❤️");
+}
+
+const reasonNumber = document.getElementById("reasonNumber");
+const reasonText = document.getElementById("reasonText");
+let currentReason = 0;
+
+function showReason() {
+  reasonNumber.textContent = `MOTIVO ${currentReason+1} / 144`;
+  reasonText.textContent = reasons[currentReason];
+}
+
+document.getElementById("nextReason").addEventListener("click",() => {
+  currentReason = (currentReason+1)%144;
+  showReason();
+});
+
+document.getElementById("prevReason").addEventListener("click",() => {
+  currentReason = (currentReason-1+144)%144;
+  showReason();
+});
+
+showReason();
+
+// COSTELLAZIONE INTERATTIVA
+
+const canvas = document.getElementById("sky");
+const ctx = canvas.getContext("2d");
+const starMessage = document.getElementById("starMessage");
+
+let stars = [];
+
+function resizeSky() {
+  const rect = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+
+  canvas.width = rect.width*dpr;
+  canvas.height = rect.height*dpr;
+
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+
+  stars = [
+    {x:rect.width*.28,y:rect.height*.48,name:"Gabriele"},
+    {x:rect.width*.72,y:rect.height*.48,name:"Elena"}
+  ];
+
+  drawSky();
+}
+
+function drawSky() {
+  const rect = canvas.getBoundingClientRect();
+  ctx.clearRect(0,0,rect.width,rect.height);
+
+  // Stelle di sfondo
+  for(let i=0;i<70;i++) {
+    const x=(i*67)%rect.width;
+    const y=(i*43)%rect.height;
+
+    ctx.beginPath();
+    ctx.arc(x,y,1.1,0,Math.PI*2);
+    ctx.fillStyle="rgba(255,255,255,.65)";
+    ctx.fill();
+  }
+
+  // Linea tra le due stelle
+  ctx.beginPath();
+  ctx.moveTo(stars[0].x,stars[0].y);
+  ctx.lineTo(stars[1].x,stars[1].y);
+  ctx.strokeStyle="rgba(245,182,210,.6)";
+  ctx.lineWidth=1.5;
+  ctx.stroke();
+
+  stars.forEach((star,index) => {
+    const glow=ctx.createRadialGradient(
+      star.x,star.y,2,star.x,star.y,35
+    );
+
+    glow.addColorStop(0,"rgba(255,220,240,.95)");
+    glow.addColorStop(1,"rgba(245,182,210,0)");
+
+    ctx.beginPath();
+    ctx.arc(star.x,star.y,35,0,Math.PI*2);
+    ctx.fillStyle=glow;
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(star.x,star.y,6,0,Math.PI*2);
+    ctx.fillStyle=index===0?"#e8cc91":"#f5b6d2";
+    ctx.fill();
+
+    ctx.font="16px Montserrat";
+    ctx.textAlign="center";
+    ctx.fillStyle="#fff6fb";
+    ctx.fillText(star.name,star.x,star.y+30);
+  });
+
+  ctx.font="24px serif";
+  ctx.textAlign="center";
+  ctx.fillStyle="#e8cc91";
+  ctx.fillText("❤️",rect.width/2,rect.height*.25);
+}
+
+canvas.addEventListener("click",event => {
+  const rect=canvas.getBoundingClientRect();
+  const x=event.clientX-rect.left;
+  const y=event.clientY-rect.top;
+
+  const touched=stars.find(star =>
+    Math.hypot(star.x-x,star.y-y)<45
+  );
+
+  if(touched) {
+    if(touched.name==="Elena") {
+      starMessage.textContent="Elena, sei la mia stella più luminosa. ❤️";
+    } else {
+      starMessage.textContent="Gabriele, il tuo cuore ha scelto la sua stella.";
     }
+  } else {
+    starMessage.textContent="Anche da lontano, le nostre stelle sono unite. ⭐";
+  }
+});
 
-    function closeLightbox() {
-      lightbox.classList.remove("open");
-      lightboxImage.src = "";
-    }
+window.addEventListener("resize",resizeSky);
+resizeSky();
 
-    document.getElementById("closeLightbox")
-      .addEventListener("click", closeLightbox);
+// REGALO DEL GIORNO
 
-    lightbox.addEventListener("click", event => {
-      if (event.target === lightbox) {
-        closeLightbox();
-      }
-    });
+const gifts = [
+  "Sei la cosa più bella che mi sia capitata. ❤️",
+  "Oggi voglio ricordarti che sei speciale.",
+  "Il mio posto preferito è accanto a te.",
+  "Sei la mia stella, anche nelle notti più buie.",
+  "Vorrei poterti abbracciare proprio adesso.",
+  "Il mio cuore ha scelto te.",
+  "Un giorno guarderemo indietro e sorrideremo di tutto.",
+  "Ti amo più di quanto riesca a spiegarti.",
+  "Il nostro futuro è uno dei miei sogni più belli.",
+  "Non dimenticare mai quanto sei importante per me.",
+  "Sei la mia piccola Lelly e ti amo tantissimo.",
+  "Ogni giorno con te è un motivo per essere felice."
+];
 
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape") {
-        closeLightbox();
-      }
-    });
+function getTodayGiftIndex() {
+  const now=new Date();
+  const dayKey=
+    now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
 
-    // 144 MOTIVI PER AMARTI
+  let hash=0;
+  for(let i=0;i<dayKey.length;i++) {
+    hash=(hash*31+dayKey.charCodeAt(i))|0;
+  }
 
-    const reasons = [
-      "Perché sei tu, semplicemente tu.",
-      "Perché il tuo sorriso illumina le mie giornate.",
-      "Perché mi fai sentire innamorato.",
-      "Perché sei la mia piccola Lelly.",
-      "Perché hai un posto speciale nel mio cuore.",
-      "Perché mi fai sognare il futuro.",
-      "Perché sei la mia stella.",
-      "Perché adoro sentirti parlare.",
-      "Perché mi fai ridere.",
-      "Perché mi fai emozionare.",
-      "Perché sei unica.",
-      "Perché sei speciale per me.",
-      "Perché mi piace pensare a noi.",
-      "Perché voglio abbracciarti.",
-      "Perché mi manchi quando siamo lontani.",
-      "Perché desidero vederti felice.",
-      "Perché sei il mio pensiero più dolce.",
-      "Perché mi piace il modo in cui sei.",
-      "Perché sei entrata nella mia vita.",
-      "Perché voglio condividere tutto con te.",
-      "Perché sei la mia compagna.",
-      "Perché mi fai battere il cuore.",
-      "Perché sei il mio amore.",
-      "Perché con te immagino una famiglia.",
-      "Perché voglio svegliarmi accanto a te.",
-      "Perché voglio stringerti la mano.",
-      "Perché voglio costruire una casa con te.",
-      "Perché mi piace parlare con te.",
-      "Perché adoro i nostri momenti.",
-      "Perché sei la mia felicità.",
-      "Perché sei il mio presente.",
-      "Perché sei nei miei sogni.",
-      "Perché voglio creare ricordi con te.",
-      "Perché sei dolce.",
-      "Perché sei meravigliosa.",
-      "Perché mi fai sentire fortunato.",
-      "Perché voglio proteggere il nostro amore.",
-      "Perché sei la mia scelta.",
-      "Perché voglio continuare a sceglierti.",
-      "Perché mi piace il tuo nome.",
-      "Perché mi piace chiamarti Lelly.",
-      "Perché sei la mia principessa.",
-      "Perché sei il mio tesoro.",
-      "Perché sei la mia persona speciale.",
-      "Perché voglio esserci per te.",
-      "Perché voglio sostenerti.",
-      "Perché voglio festeggiare i tuoi successi.",
-      "Perché voglio consolarti nei momenti difficili.",
-      "Perché voglio crescere insieme a te.",
-      "Perché voglio imparare da te.",
-      "Perché voglio migliorare per noi.",
-      "Perché il nostro amore conta per me.",
-      "Perché sei parte dei miei progetti.",
-      "Perché voglio viaggiare con te.",
-      "Perché voglio vedere il mondo insieme a te.",
-      "Perché voglio condividere le piccole cose.",
-      "Perché voglio ridere con te.",
-      "Perché voglio vivere nuove avventure con te.",
-      "Perché voglio creare tradizioni nostre.",
-      "Perché voglio ricordare ogni anniversario.",
-      "Perché voglio festeggiare il nostro amore.",
-      "Perché voglio sorprenderti.",
-      "Perché voglio farti sentire amata.",
-      "Perché voglio dirti buongiorno.",
-      "Perché voglio augurarti buonanotte.",
-      "Perché voglio essere il tuo abbraccio.",
-      "Perché voglio essere il tuo rifugio.",
-      "Perché voglio ascoltarti.",
-      "Perché voglio capirti.",
-      "Perché voglio rispettarti.",
-      "Perché voglio fidarmi di te.",
-      "Perché voglio meritare la tua fiducia.",
-      "Perché voglio affrontare la vita con te.",
-      "Perché voglio superare le difficoltà insieme.",
-      "Perché voglio costruire qualcosa di vero.",
-      "Perché voglio un amore sincero.",
-      "Perché voglio un amore che duri.",
-      "Perché voglio prendermi cura di noi.",
-      "Perché voglio custodire i nostri ricordi.",
-      "Perché voglio rivedere le nostre foto.",
-      "Perché ogni nostro ricordo mi emoziona.",
-      "Perché mi piace la nostra storia.",
-      "Perché il nostro incontro è speciale.",
-      "Perché il 9 marzo è un giorno importante.",
-      "Perché il 17 aprile è nel mio cuore.",
-      "Perché il 2 giugno mi ha cambiato la vita.",
-      "Perché voglio mantenere le promesse.",
-      "Perché voglio essere sincero con te.",
-      "Perché voglio parlare con il cuore.",
-      "Perché voglio chiederti come stai.",
-      "Perché voglio sapere cosa ti rende felice.",
-      "Perché voglio conoscere i tuoi sogni.",
-      "Perché voglio aiutarti a realizzarli.",
-      "Perché voglio vedere i tuoi occhi brillare.",
-      "Perché voglio essere orgoglioso di te.",
-      "Perché voglio che tu sia orgogliosa di noi.",
-      "Perché voglio amarti anche nei giorni difficili.",
-      "Perché voglio imparare a chiedere scusa.",
-      "Perché voglio trovare sempre il modo di capirci.",
-      "Perché voglio rispettare i tuoi spazi.",
-      "Perché voglio condividere il mio tempo con te.",
-      "Perché voglio che tu ti senta importante.",
-      "Perché voglio ricordarti quanto vali.",
-      "Perché voglio farti sorridere anche da lontano.",
-      "Perché voglio accorciare ogni distanza.",
-      "Perché voglio raggiungerti e abbracciarti.",
-      "Perché voglio camminare al tuo fianco.",
-      "Perché voglio tenerti la mano.",
-      "Perché voglio guardarti negli occhi.",
-      "Perché voglio dirti quanto ti amo.",
-      "Perché voglio chiamarti amore mio.",
-      "Perché voglio chiamarti futura moglie.",
-      "Perché sogno il nostro matrimonio.",
-      "Perché sogno la nostra casa.",
-      "Perché sogno la nostra famiglia.",
-      "Perché sogno una vita insieme.",
-      "Perché voglio condividere con te le domeniche.",
-      "Perché voglio cucinare insieme a te.",
-      "Perché voglio guardare film abbracciati.",
-      "Perché voglio fare foto buffe con te.",
-      "Perché voglio ballare con te.",
-      "Perché voglio cantare con te.",
-      "Perché voglio fare pazzie con te.",
-      "Perché voglio vivere momenti indimenticabili.",
-      "Perché voglio esserci nei tuoi giorni belli.",
-      "Perché voglio esserci nei tuoi giorni tristi.",
-      "Perché voglio essere una presenza sicura.",
-      "Perché voglio rispettare il tuo cuore.",
-      "Perché voglio proteggere la nostra complicità.",
-      "Perché voglio che il nostro amore cresca.",
-      "Perché voglio scegliere te ogni giorno.",
-      "Perché voglio continuare a innamorarmi di te.",
-      "Perché voglio avere ancora mille ricordi.",
-      "Perché voglio guardare indietro e sorridere.",
-      "Perché voglio invecchiare insieme a te.",
-      "Perché voglio che tu sia la mia ultima storia.",
-      "Perché sei la mia stella, piccola Lelly.",
-      "Perché ti amo oggi.",
-      "Perché ti amerò domani.",
-      "Perché voglio amarti in tutti i giorni che verranno.",
-      "Perché sei tu, Elena.",
-      "Perché sei il mio amore.",
-      "Perché sei il mio per sempre."
-    ];
+  return Math.abs(hash)%gifts.length;
+}
 
-    // Se un motivo viene aggiunto o tolto, completa comunque fino a 144.
-    while (reasons.length < 144) {
-      reasons.push("Perché ogni giorno trovo un nuovo motivo per amarti ❤️");
-    }
+const giftBox=document.getElementById("giftBox");
+const giftMessage=document.getElementById("giftMessage");
 
-    const reasonNumber = document.getElementById("reasonNumber");
-    const reasonText = document.getElementById("reasonText");
-    let currentReason = 0;
+function revealGift() {
+  const index=getTodayGiftIndex();
+  giftMessage.textContent=gifts[index];
+  giftMessage.classList.add("visible");
+  giftBox.textContent="💝";
+}
 
-    function showReason() {
-      reasonNumber.textContent =
-        `MOTIVO ${currentReason + 1} / 144`;
+giftBox.addEventListener("click",revealGift);
 
-      reasonText.textContent = reasons[currentReason];
-    }
+giftBox.addEventListener("keydown",event => {
+  if(event.key==="Enter" || event.key===" ") {
+    event.preventDefault();
+    revealGift();
+  }
+});
 
-    document.getElementById("nextReason")
-      .addEventListener("click", () => {
-        currentReason = (currentReason + 1) % 144;
-        showReason();
-      });
+// CUORICINI ANIMATI
 
-    document.getElementById("prevReason")
-      .addEventListener("click", () => {
-        currentReason = (currentReason - 1 + 144) % 144;
-        showReason();
-      });
+function createFloatingHeart() {
+  const heart=document.createElement("div");
+  heart.className="floating-heart";
+  heart.textContent=Math.random()>.5?"♡":"♥";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(14+Math.random()*22)+"px";
+  heart.style.animationDuration=(8+Math.random()*8)+"s";
 
-    showReason();
+  document.body.appendChild(heart);
 
-    // CUORICINI ANIMATI
+  setTimeout(() => heart.remove(),16000);
+}
 
-    function createFloatingHeart() {
-      const heart = document.createElement("div");
-      heart.className = "floating-heart";
-      heart.textContent = Math.random() > 0.5 ? "♡" : "♥";
-
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = (14 + Math.random() * 22) + "px";
-      heart.style.animationDuration = (8 + Math.random() * 8) + "s";
-
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 16000);
-    }
-
-    setInterval(createFloatingHeart, 1800);
-  </script>
+setInterval(createFloatingHeart,1800);
+</script>
 
 </body>
 </html>
