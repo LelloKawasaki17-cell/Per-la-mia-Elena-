@@ -1,0 +1,1096 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#160b18">
+<title>Elena's World ❤️</title>
+
+<style>
+:root {
+  --bg: #100912;
+  --panel: #211321;
+  --panel2: #2b192b;
+  --pink: #ff8fc8;
+  --rose: #e85d9e;
+  --gold: #f5d5a0;
+  --text: #fff2f8;
+  --muted: #c5a9bf;
+  --border: rgba(255,255,255,.09);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(circle at 15% 5%, #48213f 0, transparent 35%),
+    radial-gradient(circle at 90% 45%, #35172e 0, transparent 30%),
+    var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+button, input, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+#app {
+  max-width: 1100px;
+  margin: auto;
+  padding: 18px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.brand {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -.5px;
+}
+
+.brand span {
+  color: var(--pink);
+}
+
+.pill {
+  border: 1px solid var(--border);
+  background: #ffffff08;
+  color: var(--gold);
+  border-radius: 30px;
+  padding: 8px 13px;
+  font-size: 12px;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 48px 20px 38px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background:
+    linear-gradient(145deg, #542449aa, #211321ee 60%),
+    var(--panel);
+  box-shadow: 0 25px 80px #0005;
+}
+
+.hero::before,
+.hero::after {
+  content: "✦";
+  position: absolute;
+  color: var(--gold);
+  opacity: .6;
+  animation: twinkle 3s infinite alternate;
+}
+
+.hero::before {
+  top: 25px;
+  left: 12%;
+}
+
+.hero::after {
+  bottom: 30px;
+  right: 12%;
+}
+
+@keyframes twinkle {
+  from { opacity: .2; transform: scale(.8); }
+  to { opacity: .9; transform: scale(1.3); }
+}
+
+.heart {
+  font-size: 70px;
+  display: inline-block;
+  filter: drop-shadow(0 0 25px #ff5ca8aa);
+  animation: heartbeat 2s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.12); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+}
+
+.hero h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(35px, 8vw, 66px);
+  margin: 12px 0;
+  font-weight: 500;
+  background: linear-gradient(90deg, #fff, #ffb8dc, #f5d5a0);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 500px;
+  margin: 0 auto 22px;
+  line-height: 1.7;
+}
+
+.primary {
+  border: 0;
+  border-radius: 30px;
+  padding: 13px 24px;
+  color: #35152b;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffd0e8, #ff8fc8);
+  box-shadow: 0 8px 30px #ff5ca833;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 18px 0;
+  scrollbar-width: none;
+}
+
+.nav button {
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  background: #ffffff07;
+  color: var(--muted);
+  border-radius: 14px;
+  padding: 11px 15px;
+}
+
+.nav button.active {
+  background: #ff8fc81b;
+  border-color: #ff8fc866;
+  color: var(--pink);
+}
+
+.section {
+  display: none;
+  animation: appear .35s ease;
+}
+
+.section.active {
+  display: block;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-title {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 12px 0 6px;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0 0 22px;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: linear-gradient(145deg, #2a192b, #1b111e);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 20px;
+  min-width: 0;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+}
+
+.card p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.stat {
+  font-size: 32px;
+  color: var(--pink);
+  font-weight: 800;
+  margin: 10px 0;
+}
+
+.small {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.form {
+  display: grid;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+input, textarea {
+  width: 100%;
+  background: #100912;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 13px;
+  padding: 13px;
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  border-color: #ff8fc877;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.secondary {
+  border: 1px solid #ff8fc844;
+  background: #ff8fc812;
+  color: var(--pink);
+  border-radius: 13px;
+  padding: 12px 15px;
+}
+
+.danger {
+  color: #ff9aab;
+  border-color: #ff9aab44;
+  background: #ff9aab10;
+}
+
+.memory {
+  border-left: 2px solid #ff8fc866;
+  padding: 4px 0 20px 18px;
+  margin-left: 8px;
+  position: relative;
+}
+
+.memory::before {
+  content: "♥";
+  position: absolute;
+  left: -10px;
+  top: 0;
+  background: var(--bg);
+  color: var(--pink);
+  padding: 0 3px;
+}
+
+.memory time {
+  color: var(--gold);
+  font-size: 12px;
+}
+
+.memory h3 {
+  margin: 7px 0;
+}
+
+.memory p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.reason-box {
+  text-align: center;
+  padding: 30px 15px;
+}
+
+.reason-number {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.reason-text {
+  font-family: Georgia, serif;
+  font-size: clamp(25px, 5vw, 38px);
+  line-height: 1.4;
+  margin: 25px 0;
+}
+
+.reason-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.letter {
+  white-space: pre-wrap;
+  font-family: Georgia, serif;
+  line-height: 1.9;
+  color: #f9ddeb;
+}
+
+.dream {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+  padding: 14px;
+  border-radius: 14px;
+  background: #ffffff06;
+  border: 1px solid var(--border);
+}
+
+.dream input {
+  width: auto;
+  accent-color: var(--pink);
+}
+
+.dream.done {
+  opacity: .55;
+  text-decoration: line-through;
+}
+
+footer {
+  text-align: center;
+  color: #9d8199;
+  padding: 35px 0 15px;
+  font-size: 12px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #392039;
+  border: 1px solid #ff8fc855;
+  color: white;
+  padding: 13px 20px;
+  border-radius: 30px;
+  box-shadow: 0 10px 40px #0007;
+  z-index: 10;
+  display: none;
+}
+
+@media (max-width: 650px) {
+  #app { padding: 13px; }
+  .grid { grid-template-columns: 1fr; }
+  .hero { padding: 35px 16px; }
+  .card { padding: 17px; }
+}
+</style>
+</head>
+
+<body>
+<div id="app">
+
+<header class="topbar">
+  <div class="brand">Elena's <span>World</span> ♥</div>
+  <div class="pill">SOLO NOI DUE</div>
+</header>
+
+<section class="hero">
+  <div class="heart">♥</div>
+  <h1>Il nostro mondo</h1>
+  <p>
+    In mezzo a miliardi di persone,<br>
+    io sceglierei sempre te.
+  </p>
+  <button class="primary" onclick="showSection('memories')">
+    Entra nei nostri ricordi ✨
+  </button>
+</section>
+
+<nav class="nav">
+  <button class="active" onclick="showSection('home',this)">🏠 Home</button>
+  <button onclick="showSection('memories',this)">📸 Ricordi</button>
+  <button onclick="showSection('reasons',this)">💌 144 motivi</button>
+  <button onclick="showSection('letters',this)">✉️ Lettere</button>
+  <button onclick="showSection('calendar',this)">📅 Calendario</button>
+  <button onclick="showSection('future',this)">🌙 Futuro</button>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="section active">
+  <h2 class="section-title">La nostra storia</h2>
+  <p class="subtitle">Ogni giorno con te è una pagina che voglio continuare a scrivere.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>❤️ Insieme da</h3>
+      <div class="stat" id="daysTogether">...</div>
+      <p>giorni di noi</p>
+    </div>
+
+    <div class="card">
+      <h3>✨ La nostra data</h3>
+      <div class="stat">17.04.2026</div>
+      <p>Il giorno in cui siamo diventati noi.</p>
+    </div>
+
+    <div class="card">
+      <h3>💫 Il nostro inizio</h3>
+      <p>Ci siamo conosciuti il 9 marzo 2026. Da quel momento, qualcosa di speciale ha iniziato a prendere forma.</p>
+    </div>
+
+    <div class="card">
+      <h3>💍 Una promessa</h3>
+      <p>Il 2 giugno 2026 ti ho chiesto di sposarmi. Un sogno che voglio costruire insieme a te.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px;text-align:center">
+    <h3>Una sorpresa per Elena</h3>
+    <p id="surpriseText" style="margin:15px 0">
+      Sei la mia persona preferita.
+    </p>
+    <button class="secondary" onclick="surprise()">Apri una sorpresa 💝</button>
+  </div>
+</section>
+
+<!-- RICORDI -->
+<section id="memories" class="section">
+  <h2 class="section-title">I nostri ricordi</h2>
+  <p class="subtitle">Le date che hanno reso speciale la nostra storia.</p>
+
+  <div id="memoryList"></div>
+
+  <div class="card">
+    <h3>➕ Aggiungi un ricordo</h3>
+    <div class="form">
+      <input id="memoryDate" type="date">
+      <input id="memoryTitle" placeholder="Titolo del ricordo">
+      <textarea id="memoryDesc" placeholder="Racconta questo momento..."></textarea>
+      <button class="primary" onclick="addMemory()">Salva ricordo</button>
+    </div>
+  </div>
+</section>
+
+<!-- 144 MOTIVI -->
+<section id="reasons" class="section">
+  <h2 class="section-title">144 motivi per cui ti amo</h2>
+  <p class="subtitle">Ogni motivo è una piccola parte di tutto quello che provo per te.</p>
+
+  <div class="card reason-box">
+    <div class="reason-number" id="reasonNumber">MOTIVO 1 DI 144</div>
+    <div class="reason-text" id="reasonText">Perché sei Elena.</div>
+    <div class="reason-actions">
+      <button class="secondary" onclick="previousReason()">← Indietro</button>
+      <button class="primary" onclick="nextReason()">Un altro motivo ♥</button>
+    </div>
+  </div>
+</section>
+
+<!-- LETTERE -->
+<section id="letters" class="section">
+  <h2 class="section-title">Le nostre lettere</h2>
+  <p class="subtitle">Parole da custodire e rileggere quando vuoi.</p>
+
+  <div id="letterList"></div>
+
+  <div class="card">
+    <h3>✍️ Scrivi una lettera</h3>
+    <div class="form">
+      <input id="letterTitle" placeholder="Titolo della lettera">
+      <textarea id="letterContent" placeholder="Amore mio..."></textarea>
+      <button class="primary" onclick="addLetter()">Conserva la lettera</button>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDARIO -->
+<section id="calendar" class="section">
+  <h2 class="section-title">Il nostro calendario</h2>
+  <p class="subtitle">Le date che non vogliamo dimenticare.</p>
+
+  <div id="eventList"></div>
+
+  <div class="card">
+    <h3>📅 Aggiungi una data</h3>
+    <div class="form">
+      <input id="eventDate" type="date">
+      <input id="eventTitle" placeholder="Che cosa festeggiamo?">
+      <button class="primary" onclick="addEvent()">Aggiungi al calendario</button>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURO -->
+<section id="future" class="section">
+  <h2 class="section-title">Il nostro futuro</h2>
+  <p class="subtitle">Non sappiamo ancora ogni dettaglio, ma sappiamo chi vogliamo avere accanto.</p>
+
+  <div id="dreamList"></div>
+
+  <div class="card">
+    <h3>🌙 Aggiungi un sogno</h3>
+    <div class="form">
+      <input id="dreamText" placeholder="Un sogno da realizzare insieme">
+      <button class="primary" onclick="addDream()">Aggiungi il sogno</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Creato con amore per Elena ♥<br>
+  <span>Elena's World · Il nostro piccolo universo</span>
+</footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const KEY = "elenasWorldData_v1";
+
+const defaultData = {
+  memories: [
+    {
+      date: "2026-03-09",
+      title: "Il nostro primo incontro",
+      desc: "Il giorno in cui le nostre strade si sono incrociate."
+    },
+    {
+      date: "2026-04-17",
+      title: "Il giorno in cui siamo diventati noi",
+      desc: "La data in cui abbiamo scelto di stare insieme."
+    },
+    {
+      date: "2026-06-02",
+      title: "Una promessa d'amore",
+      desc: "Il giorno in cui ti ho chiesto di sposarmi."
+    }
+  ],
+  letters: [
+    {
+      title: "Per l'amore della mia vita",
+      content: "Amore mio,\n\nSei entrata nella mia vita e hai dato un significato nuovo a tante cose.\n\nVoglio continuare a conoscerti, a sceglierti e a costruire qualcosa di bello insieme a te.\n\nNon prometto che ogni giorno sarà perfetto. Prometto però di impegnarmi, di ascoltarti e di ricordarmi quanto sei importante per me.\n\nTi amo, Elena. ❤️"
+    }
+  ],
+  events: [
+    {
+      date: "2026-04-17",
+      title: "Il nostro anniversario"
+    },
+    {
+      date: "2026-11-20",
+      title: "Il compleanno di Elena 🎂"
+    }
+  ],
+  dreams: [
+    "Fare tanti viaggi insieme",
+    "Costruire la nostra casa",
+    "Sposarci e festeggiare il nostro amore",
+    "Creare una famiglia",
+    "Continuare a sceglierci ogni giorno"
+  ],
+  checkedDreams: [],
+  reasonIndex: 0
+};
+
+let data;
+
+try {
+  data = JSON.parse(localStorage.getItem(KEY)) || structuredClone(defaultData);
+} catch (e) {
+  data = JSON.parse(JSON.stringify(defaultData));
+}
+
+function save() {
+  localStorage.setItem(KEY, JSON.stringify(data));
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  }[char]));
+}
+
+function formatDate(date) {
+  if (!date) return "";
+  const parts = date.split("-");
+  if (parts.length !== 3) return date;
+  return parts[2] + "/" + parts[1] + "/" + parts[0];
+}
+
+function showSection(id, button) {
+  document.querySelectorAll(".section").forEach(section => {
+    section.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+
+  document.querySelectorAll(".nav button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  if (button) button.classList.add("active");
+
+  const navButton = [...document.querySelectorAll(".nav button")]
+    .find(btn => btn.getAttribute("onclick")?.includes("'" + id + "'"));
+
+  if (navButton) navButton.classList.add("active");
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function toast(message) {
+  const element = document.getElementById("toast");
+  element.textContent = message;
+  element.style.display = "block";
+
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(() => {
+    element.style.display = "none";
+  }, 2500);
+}
+
+function updateDays() {
+  const start = new Date(2026, 3, 17);
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const days = Math.max(
+    0,
+    Math.floor((today - start) / 86400000)
+  );
+
+  document.getElementById("daysTogether").textContent = days;
+}
+
+/* RICORDI */
+
+function renderMemories() {
+  const list = document.getElementById("memoryList");
+
+  const memories = [...data.memories].sort((a,b) =>
+    a.date.localeCompare(b.date)
+  );
+
+  list.innerHTML = memories.map((item,index) => `
+    <div class="memory">
+      <time>${formatDate(item.date)}</time>
+      <h3>${escapeHTML(item.title)}</h3>
+      <p>${escapeHTML(item.desc)}</p>
+      <button class="secondary danger"
+        style="margin-top:10px"
+        onclick="deleteMemory(${index})">
+        Elimina
+      </button>
+    </div>
+  `).join("");
+}
+
+function addMemory() {
+  const date = document.getElementById("memoryDate").value;
+  const title = document.getElementById("memoryTitle").value.trim();
+  const desc = document.getElementById("memoryDesc").value.trim();
+
+  if (!date || !title || !desc) {
+    toast("Completa tutti i campi ❤️");
+    return;
+  }
+
+  data.memories.push({ date, title, desc });
+  save();
+  renderMemories();
+
+  document.getElementById("memoryDate").value = "";
+  document.getElementById("memoryTitle").value = "";
+  document.getElementById("memoryDesc").value = "";
+
+  toast("Ricordo custodito ❤️");
+}
+
+function deleteMemory(index) {
+  if (!confirm("Vuoi eliminare questo ricordo?")) return;
+  data.memories.splice(index,1);
+  save();
+  renderMemories();
+}
+
+/* 144 MOTIVI */
+
+const reasons = [
+"Perché sei Elena.",
+"Perché il tuo sorriso mi cambia la giornata.",
+"Perché mi fai sentire innamorato.",
+"Perché sei unica.",
+"Perché mi piace parlare con te.",
+"Perché mi fai ridere.",
+"Perché sei la mia persona speciale.",
+"Perché mi piace immaginare il nostro futuro.",
+"Perché hai un posto nel mio cuore.",
+"Perché sei capace di sorprendermi.",
+"Perché mi piace quando mi racconti le tue giornate.",
+"Perché sei parte dei miei pensieri.",
+"Perché mi fai venire voglia di migliorare.",
+"Perché sei dolce a modo tuo.",
+"Perché con te posso sognare.",
+"Perché mi piace chiamarti amore.",
+"Perché sei importante per me.",
+"Perché mi fai sentire vicino anche da lontano.",
+"Perché mi piace ascoltare la tua voce.",
+"Perché sei la mia scelta.",
+"Perché amo la tua spontaneità.",
+"Perché sai essere buffa.",
+"Perché hai un mondo tutto tuo.",
+"Perché voglio conoscere ogni tua sfumatura.",
+"Perché mi piace prendermi cura di te.",
+"Perché voglio vederti felice.",
+"Perché mi fai battere il cuore.",
+"Perché sei il mio pensiero bello.",
+"Perché mi piace condividere le cose con te.",
+"Perché voglio esserci nei tuoi momenti importanti.",
+"Perché mi piace quando sei felice.",
+"Perché sei una parte della mia vita.",
+"Perché mi piace il modo in cui mi chiami.",
+"Perché mi fai immaginare una casa insieme.",
+"Perché amo i nostri progetti.",
+"Perché voglio creare ricordi con te.",
+"Perché mi piace sorprenderti.",
+"Perché mi piace farti sentire amata.",
+"Perché sei speciale anche nei giorni normali.",
+"Perché voglio ascoltarti davvero.",
+"Perché mi piace il tuo carattere.",
+"Perché sei piena di energia.",
+"Perché mi fai sorridere senza accorgertene.",
+"Perché mi piace pensare a noi.",
+"Perché voglio condividere nuove esperienze.",
+"Perché mi piace il tuo modo di essere.",
+"Perché mi fai sentire fortunato.",
+"Perché sei il mio amore.",
+"Perché voglio costruire con te.",
+"Perché mi piace immaginare il nostro matrimonio.",
+"Perché voglio festeggiare tanti anniversari.",
+"Perché sei una persona che conta.",
+"Perché mi piace la nostra storia.",
+"Perché voglio imparare da te.",
+"Perché mi piace quando mi racconti qualcosa con entusiasmo.",
+"Perché sei capace di farmi emozionare.",
+"Perché mi piace il tuo lato tenero.",
+"Perché mi piace anche il tuo lato pazzerello.",
+"Perché sei il mio piccolo universo.",
+"Perché mi piace pensare al prossimo incontro.",
+"Perché voglio abbracciarti forte.",
+"Perché mi piace immaginare il tuo viso.",
+"Perché sei nei miei sogni.",
+"Perché voglio esserci quando hai bisogno.",
+"Perché voglio condividere le risate.",
+"Perché voglio condividere anche i silenzi.",
+"Perché mi piace la tua sincerità.",
+"Perché mi piace quando sei te stessa.",
+"Perché voglio rispettare i tuoi sogni.",
+"Perché voglio sostenerti.",
+"Perché mi piace vedere quanto tieni alle cose.",
+"Perché sei una persona preziosa.",
+"Perché voglio vivere nuove avventure.",
+"Perché mi piace il nostro modo di scherzare.",
+"Perché mi fai sentire emozioni vere.",
+"Perché voglio conoscerti sempre meglio.",
+"Perché mi piace la tua voce al telefono.",
+"Perché mi piace quando mi fai una sorpresa.",
+"Perché voglio rendere speciali le nostre date.",
+"Perché mi piace parlare del futuro.",
+"Perché sei la mia complice.",
+"Perché voglio condividere le piccole cose.",
+"Perché mi piace quando mi racconti i tuoi sogni.",
+"Perché voglio vederti realizzarli.",
+"Perché mi piace il tuo entusiasmo.",
+"Perché sei piena di sfumature.",
+"Perché mi fai sentire emozioni che non so spiegare.",
+"Perché voglio prenderti la mano.",
+"Perché voglio camminare accanto a te.",
+"Perché mi piace immaginare i nostri viaggi.",
+"Perché voglio fotografare i nostri momenti.",
+"Perché mi piace quando ridiamo insieme.",
+"Perché voglio creare tradizioni nostre.",
+"Perché mi piace il nostro legame.",
+"Perché voglio essere una presenza positiva nella tua vita.",
+"Perché mi piace quando mi fai sentire importante.",
+"Perché voglio imparare a capirti sempre meglio.",
+"Perché mi piace il tuo modo di raccontare le cose.",
+"Perché voglio festeggiare i tuoi successi.",
+"Perché voglio aiutarti nei momenti difficili.",
+"Perché mi piace immaginare una domenica insieme.",
+"Perché voglio fare colazione con te.",
+"Perché voglio guardare film insieme.",
+"Perché voglio scoprire posti nuovi con te.",
+"Perché voglio creare un album dei nostri ricordi.",
+"Perché voglio riempire la nostra vita di momenti belli.",
+"Perché mi piace quando mi fai ridere tantissimo.",
+"Perché voglio sorprenderti con piccoli gesti.",
+"Perché mi piace la tua dolcezza.",
+"Perché voglio condividere le nostre passioni.",
+"Perché mi piace quando parli senza fermarti.",
+"Perché voglio ascoltare tutte le tue storie.",
+"Perché mi piace il tuo modo di essere speciale.",
+"Perché voglio costruire una famiglia con amore.",
+"Perché voglio che i nostri sogni abbiano spazio.",
+"Perché mi piace immaginare il nostro futuro insieme.",
+"Perché voglio celebrare ogni piccolo traguardo.",
+"Perché mi piace quando siamo complici.",
+"Perché voglio esserci con rispetto e pazienza.",
+"Perché voglio imparare anche dai nostri errori.",
+"Perché voglio scegliere il dialogo.",
+"Perché voglio proteggere ciò che abbiamo costruito.",
+"Perché mi piace la nostra promessa.",
+"Perché voglio continuare a sorprenderti.",
+"Perché mi piace quando mi dici che mi ami.",
+"Perché voglio dirti quanto sei importante.",
+"Perché mi piace il tuo nome.",
+"Perché mi piace scriverti messaggi.",
+"Perché voglio custodire le nostre foto.",
+"Perché voglio ricordare il nostro primo incontro.",
+"Perché voglio ricordare il giorno in cui ci siamo scelti.",
+"Perché voglio ricordare la promessa che ti ho fatto.",
+"Perché mi piace pensare a tutte le cose che ci aspettano.",
+"Perché voglio un futuro pieno di complicità.",
+"Perché voglio continuare a crescere insieme.",
+"Perché voglio che tu possa essere sempre te stessa.",
+"Perché voglio festeggiare la tua felicità.",
+"Perché mi piace il nostro piccolo mondo.",
+"Perché sei la mia Elena.",
+"Perché il mio cuore ti ha scelta.",
+"Perché voglio continuare a scrivere la nostra storia.",
+"Perché ti amo oggi.",
+"Perché ti amerò nei giorni che verranno.",
+"Perché ogni giorno posso trovare un motivo nuovo.",
+"Perché tra tutte le storie, la mia preferita è la nostra.",
+"Perché sei tu.",
+"Perché siamo noi.",
+"Perché il mio amore per te non si esaurisce in 144 motivi."
+];
+
+function renderReason() {
+  const index = data.reasonIndex % reasons.length;
+  document.getElementById("reasonNumber").textContent =
+    "MOTIVO " + (index + 1) + " DI 144";
+  document.getElementById("reasonText").textContent = reasons[index];
+}
+
+function nextReason() {
+  data.reasonIndex = (data.reasonIndex + 1) % reasons.length;
+  save();
+  renderReason();
+}
+
+function previousReason() {
+  data.reasonIndex =
+    (data.reasonIndex - 1 + reasons.length) % reasons.length;
+  save();
+  renderReason();
+}
+
+/* LETTERE */
+
+function renderLetters() {
+  const list = document.getElementById("letterList");
+
+  list.innerHTML = data.letters.map((letter,index) => `
+    <div class="card" style="margin-bottom:14px">
+      <h3>💌 ${escapeHTML(letter.title)}</h3>
+      <p class="letter">${escapeHTML(letter.content)}</p>
+      <button class="secondary danger"
+        style="margin-top:12px"
+        onclick="deleteLetter(${index})">
+        Elimina lettera
+      </button>
+    </div>
+  `).join("");
+}
+
+function addLetter() {
+  const title = document.getElementById("letterTitle").value.trim();
+  const content = document.getElementById("letterContent").value.trim();
+
+  if (!title || !content) {
+    toast("Scrivi il titolo e la lettera ❤️");
+    return;
+  }
+
+  data.letters.unshift({ title, content });
+  save();
+  renderLetters();
+
+  document.getElementById("letterTitle").value = "";
+  document.getElementById("letterContent").value = "";
+
+  toast("La tua lettera è stata conservata 💌");
+}
+
+function deleteLetter(index) {
+  if (!confirm("Vuoi eliminare questa lettera?")) return;
+  data.letters.splice(index,1);
+  save();
+  renderLetters();
+}
+
+/* CALENDARIO */
+
+function renderEvents() {
+  const list = document.getElementById("eventList");
+
+  const events = [...data.events].sort((a,b) =>
+    a.date.localeCompare(b.date)
+  );
+
+  list.innerHTML = events.map((event,index) => `
+    <div class="memory">
+      <time>${formatDate(event.date)}</time>
+      <h3>${escapeHTML(event.title)}</h3>
+      <button class="secondary danger"
+        style="margin-top:8px"
+        onclick="deleteEvent(${index})">
+        Elimina
+      </button>
+    </div>
+  `).join("");
+}
+
+function addEvent() {
+  const date = document.getElementById("eventDate").value;
+  const title = document.getElementById("eventTitle").value.trim();
+
+  if (!date || !title) {
+    toast("Inserisci una data e un titolo ❤️");
+    return;
+  }
+
+  data.events.push({ date, title });
+  save();
+  renderEvents();
+
+  document.getElementById("eventDate").value = "";
+  document.getElementById("eventTitle").value = "";
+
+  toast("Data aggiunta al calendario 📅");
+}
+
+function deleteEvent(index) {
+  if (!confirm("Vuoi eliminare questa data?")) return;
+  data.events.splice(index,1);
+  save();
+  renderEvents();
+}
+
+/* FUTURO */
+
+function renderDreams() {
+  const list = document.getElementById("dreamList");
+
+  list.innerHTML = data.dreams.map((dream,index) => {
+    const checked = data.checkedDreams.includes(index);
+
+    return `
+      <label class="dream ${checked ? "done" : ""}">
+        <input type="checkbox"
+          ${checked ? "checked" : ""}
+          onchange="toggleDream(${index},this.checked)">
+        <span>${escapeHTML(dream)}</span>
+        <button type="button"
+          class="secondary danger"
+          style="margin-left:auto;padding:7px"
+          onclick="deleteDream(event,${index})">
+          ×
+        </button>
+      </label>
+    `;
+  }).join("");
+}
+
+function addDream() {
+  const input = document.getElementById("dreamText");
+  const dream = input.value.trim();
+
+  if (!dream) {
+    toast("Scrivi un sogno da realizzare 🌙");
+    return;
+  }
+
+  data.dreams.push(dream);
+  save();
+  renderDreams();
+  input.value = "";
+
+  toast("Un nuovo sogno da realizzare insieme ✨");
+}
+
+function toggleDream(index,checked) {
+  if (checked && !data.checkedDreams.includes(index)) {
+    data.checkedDreams.push(index);
+  } else {
+    data.checkedDreams = data.checkedDreams.filter(i => i !== index);
+  }
+
+  save();
+  renderDreams();
+}
+
+function deleteDream(event,index) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  if (!confirm("Vuoi eliminare questo sogno?")) return;
+
+  data.dreams.splice(index,1);
+  data.checkedDreams = data.checkedDreams
+    .filter(i => i !== index)
+    .map(i => i > index ? i - 1 : i);
+
+  save();
+  renderDreams();
+}
+
+/* SORPRESA */
+
+const surprises = [
+  "Sei la mia persona preferita. ❤️",
+  "Vorrei poterti abbracciare proprio adesso.",
+  "Il mio futuro preferito ha te dentro.",
+  "Non vedo l'ora di creare un altro ricordo con te.",
+  "Ti sceglierei ancora, Elena.",
+  "Sei il mio pensiero bello di oggi.",
+  "Un giorno racconteremo la nostra storia sorridendo.",
+  "Ti mando un abbraccio enorme, anche da lontano.",
+  "Il nostro mondo è più bello quando ci siamo entrambi.",
+  "Ti amo, amore mio. Sempre con rispetto e cuore."
+];
+
+function surprise() {
+  const index = Math.floor(Math.random() * surprises.length);
+  document.getElementById("surpriseText").textContent = surprises[index];
+}
+
+/* AVVIO */
+
+updateDays();
+renderMemories();
+renderReason();
+renderLetters();
+renderEvents();
+renderDreams();
+</script>
+</body>
+</html>
